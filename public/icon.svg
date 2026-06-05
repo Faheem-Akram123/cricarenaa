@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="ballGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#b91c1c" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- Background Shield Shape -->
+  <rect width="512" height="512" rx="112" fill="#0f172a" />
+  <path d="M120,90 L392,90 C430,90 440,120 440,160 L440,280 C440,380 320,440 256,460 C192,440 72,380 72,280 L72,160 C72,120 82,90 120,90 Z" fill="url(#shieldGrad)" opacity="0.15" />
+  
+  <!-- Outer Ring Glowing -->
+  <circle cx="256" cy="256" r="160" fill="none" stroke="#10b981" stroke-width="12" stroke-dasharray="10 16" filter="url(#glow)" opacity="0.8" />
+  
+  <!-- Inner Cricket Ball -->
+  <circle cx="256" cy="256" r="110" fill="url(#ballGrad)" filter="url(#glow)" />
+  
+  <!-- Seam Lines of Cricket Ball -->
+  <path d="M256,146 C210,180 210,332 256,366" fill="none" stroke="#ffffff" stroke-width="8" stroke-dasharray="6 4" opacity="0.9" />
+  <path d="M256,146 C302,180 302,332 256,366" fill="none" stroke="#ffffff" stroke-width="8" stroke-dasharray="6 4" opacity="0.9" />
+  <path d="M256,146 L256,366" fill="none" stroke="#ffffff" stroke-dasharray="2 6" stroke-width="4" opacity="0.5" />
+
+  <!-- Cricket Bats Crossed -->
+  <g fill="#ffffff" opacity="0.95">
+    <!-- Star Deco -->
+    <polygon points="256,50 262,68 280,68 266,78 271,96 256,85 241,96 246,78 232,68 250,68" fill="#a3e635" />
+  </g>
+</svg>

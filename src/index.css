@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Montserrat:wght@400;600;800&family=Outfit:wght@400;600;800&family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--display-font, "Rajdhani"), sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    font-family: var(--font-sans);
+  }
+
+  :root {
+    --brand-primary: #0B9B4D;
+    --brand-dark: #0A4D2E;
+  }
+
+  /* Custom overrides for components mapped with dynamic styles */
+  .bg-\[\#0B9B4D\] {
+    background-color: var(--brand-primary) !important;
+  }
+  .hover\:bg-\[\#0A4D2E\]:hover {
+    background-color: var(--brand-dark) !important;
+  }
+  .bg-\[\#0A4D2E\] {
+    background-color: var(--brand-dark) !important;
+  }
+  .text-\[\#0B9B4D\] {
+    color: var(--brand-primary) !important;
+  }
+  .text-\[\#0A4D2E\] {
+    color: var(--brand-dark) !important;
+  }
+  .border-\[\#0B9B4D\] {
+    border-color: var(--brand-primary) !important;
+  }
+  .focus\:outline-\[\#0B9B4D\]:focus {
+    outline-color: var(--brand-primary) !important;
+  }
+}
+

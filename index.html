@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CricArena - Cricket Scoring & Player Records</title>
+    <!-- Web App PWA Manifest Link -->
+    <link rel="manifest" href="/manifest.json" />
+    <!-- Apple Web App Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="CricArena" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+  </head>
+  <body class="bg-slate-50 selection:bg-emerald-500 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Progressive Web App Registration Script -->
+    <script>
+      // Register Service Worker for PWA installability
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('CricArena Service Worker registered successfully:', reg.scope))
+            .catch(err => console.error('Service Worker registration failed:', err));
+        });
+      }
+
+      // Capture beforeinstallprompt event globally for custom "Install Website" button clicks in React
+      window.deferredPrompt = null;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent Chrome 67 and earlier from automatically showing the prompt
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        window.deferredPrompt = e;
+        
+        // Dispatch custom event to notify React components that PWA install option is available
+        window.dispatchEvent(new CustomEvent('pwa-installable', { detail: true }));
+      });
+
+      window.addEventListener('appinstalled', () => {
+        // Clear the deferred prompt and notify
+        window.deferredPrompt = null;
+        console.log('CricArena App was successfully installed on target device!');
+        window.dispatchEvent(new CustomEvent('pwa-installable', { detail: false }));
+      });
+    </script>
+  </body>
+</html>
+

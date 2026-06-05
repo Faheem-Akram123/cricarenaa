@@ -1,0 +1,6 @@
+{
+  "name": "CricArena",
+  "description": "An advanced, mobile-friendly cricket scoring, team management, and match analytics dashboard.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

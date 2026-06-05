@@ -1,0 +1,19 @@
+{
+  "name": "CricArena - Cricket Score & Player Records",
+  "short_name": "CricArena",
+  "comment": "Professional cricket scorekeeping and player record analytics applet",
+  "description": "Keep real-time cricket matches scores, manage player histories across teams, analyze duels and club clashes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
