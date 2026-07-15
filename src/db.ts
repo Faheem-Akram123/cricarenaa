@@ -4,7 +4,7 @@
  */
 
 import { Team, Player, Tournament, Match, Settings } from './types';
-import { initialTeams, initialPlayers, initialTournaments, initialMatches, defaultSettings } from './defaultData';
+import { defaultSettings } from './defaultData';
 
 export const DB = {
   get<T>(key: string, defaultValue: T): T {
@@ -32,6 +32,7 @@ export const DB = {
 
   init(): void {
     if (!localStorage.getItem('cric_init')) {
+      // REQUIREMENT: Initialize with empty arrays (No default demo data)
       DB.set<Team[]>('teams', []);
       DB.set<Player[]>('players', []);
       DB.set<Tournament[]>('tournaments', []);
@@ -39,7 +40,16 @@ export const DB = {
       DB.set<Settings>('settings', defaultSettings);
       DB.set<string | null>('liveMatchId', null);
       DB.set<boolean>('init', true);
+      localStorage.removeItem('cric_unlocked');
     }
+  },
+
+  setAuthStatus(isUnlocked: boolean): void {
+    localStorage.setItem('cric_unlocked', isUnlocked ? 'true' : 'false');
+  },
+
+  getAuthStatus(): boolean {
+    return localStorage.getItem('cric_unlocked') === 'true';
   },
 
   getTeams(): Team[] {
@@ -83,7 +93,7 @@ export const DB = {
   },
 
   getLiveMatchId(): string | null {
-    return DB.get<string | null>('liveMatchId', 'm1');
+    return DB.get<string | null>('liveMatchId', null);
   },
 
   setLiveMatchId(id: string | null): void {
